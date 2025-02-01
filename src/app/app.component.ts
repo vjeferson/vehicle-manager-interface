@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
+import * as packageInfo from '../../package.json';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,11 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  title = 'vehicle-manager-interface';
+export class AppComponent implements OnInit {
+  private readonly appTitle = 'Info veículos';
+  private readonly appInfo = packageInfo;
+  
+  ngOnInit(): void {
+    console.log(`${this.appTitle} Versão: ${this.appInfo.version}`);
+  }
 }
