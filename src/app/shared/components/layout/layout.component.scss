@@ -1,34 +1,17 @@
 .layout {
-  &_tollbar {
+  &_toolbar {
     display: flex;
     justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    
+    img {
+      width: 3rem;
+      margin-right: 0.5rem;
+    }
   }
 
   &_content {
     padding: 2rem;
-  }
-
-  .language-select-button {
-    display: block;
-    margin: 0 0 0 auto;
-    height: 44px;
-  }
-
-  .language-select-button-label {
-    margin-top: 2px;
-    margin-bottom: 2px;
-    width: 100%;
-    color: #979797;
-    font-size: 12px;
-    line-height: 14px;
-    text-align: start;
-  }
-
-  .language-selected {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 25px;
-    min-width: 90px;
   }
 }

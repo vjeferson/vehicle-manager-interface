@@ -1,19 +1,11 @@
 <div class="layout">
   <mat-toolbar color="primary" class="layout_toolbar">
-    <span translate="general.app-title"></span>
-    <span class="example-spacer"></span>
-  
-    <button mat-button [matMenuTriggerFor]="menuLanguage" class="language-select-button">
-      <p class="language-select-button-label" translate="general.components.language-options.label"></p>
-      <div class="language-selected">
-        <span [translate]="languageSelected.name"></span>
-      </div>
-    </button>
-    <mat-menu #menuLanguage="matMenu">
-      @for (option of languageOptions; track option) {
-        <button mat-menu-item (click)="onChangeLanguage(option)">{{ option.name | translate }}</button>
-      }
-    </mat-menu>
+    <div>
+      <img src="../../../../favicon.ico" alt="Info veículos">
+      <span translate="general.app-title"></span>
+    </div>
+
+    <app-language-change></app-language-change>
   </mat-toolbar>
   
   <main class="layout_content">

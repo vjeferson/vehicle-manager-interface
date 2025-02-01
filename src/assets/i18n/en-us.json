@@ -11,6 +11,9 @@
     "buttons": {
       "cancel": "Cancel",
       "register": "Register"
+    },
+    "form-validations": {
+      "required": "Required field"
     }
   },
   "pages": {
@@ -19,7 +22,13 @@
     },
     "vehicle-form": {
       "title-register": "Vehicle registration",
-      "title-edit": "Vehicle edition"
+      "title-edit": "Vehicle edition",
+      "label-plate": "Plate",
+      "label-chassis": "Chassis",
+      "label-renavam": "Renavam",
+      "label-model": "Model",
+      "label-brand": "Brand",
+      "label-year": "Year"
     }
   }
 }

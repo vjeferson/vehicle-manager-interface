@@ -11,6 +11,9 @@
     "buttons": {
       "cancel": "Cancelar",
       "register": "Cadastrar"
+    },
+    "form-validations": {
+      "required": "Campo obrigatório"
     }
   },
   "pages": {
@@ -19,7 +22,13 @@
     },
     "vehicle-form": {
       "title-register": "Cadastro veículo",
-      "title-edit": "Edição veículo"
+      "title-edit": "Edição veículo",
+      "label-plate": "Placa",
+      "label-chassis": "Chassi",
+      "label-renavam": "Renavam",
+      "label-model": "Modelo",
+      "label-brand": "Marca",
+      "label-year": "Ano"
     }
   }
 }

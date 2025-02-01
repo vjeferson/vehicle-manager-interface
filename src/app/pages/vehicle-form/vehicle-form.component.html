@@ -5,58 +5,58 @@
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
     <div class="row">
       <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-        <mat-label>Placa</mat-label>
+        <mat-label translate="pages.vehicle-form.label-plate"></mat-label>
         <input matInput formControlName="plate" placeholder="Ex. ABC 123" />
 
         @if(formGroup.controls['plate'].hasError('required')){
-          <mat-error>Campo obrigatório</mat-error>
+          <mat-error translate="general.form-validations.required"></mat-error>
         }
       </mat-form-field>
 
       <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-        <mat-label>Chassi</mat-label>
+        <mat-label translate="pages.vehicle-form.label-chassis"></mat-label>
         <input matInput formControlName="chassis"/>
 
         @if(formGroup.controls['chassis'].hasError('required')){
-          <mat-error>Campo obrigatório</mat-error>
+          <mat-error translate="general.form-validations.required"></mat-error>
         }
       </mat-form-field>
 
       <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-        <mat-label>Renavam</mat-label>
+        <mat-label translate="pages.vehicle-form.label-renavam"></mat-label>
         <input matInput formControlName="renavam"/>
 
         @if(formGroup.controls['renavam'].hasError('required')){
-          <mat-error>Campo obrigatório</mat-error>
+          <mat-error translate="general.form-validations.required"></mat-error>
         }
       </mat-form-field>
 
       <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-        <mat-label>Modelo</mat-label>
+        <mat-label translate="pages.vehicle-form.label-model"></mat-label>
         <input matInput formControlName="model"/>
 
         @if(formGroup.controls['model'].hasError('required')){
-          <mat-error>Campo obrigatório</mat-error>
+          <mat-error translate="general.form-validations.required"></mat-error>
         }
       </mat-form-field>
     </div>
 
     <div class="row">
       <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-        <mat-label>Marca</mat-label>
+        <mat-label translate="pages.vehicle-form.label-brand"></mat-label>
         <input matInput formControlName="brand"/>
 
         @if(formGroup.controls['brand'].hasError('required')){
-          <mat-error>Campo obrigatório</mat-error>
+          <mat-error translate="general.form-validations.required"></mat-error>
         }
       </mat-form-field>
 
       <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-        <mat-label>Ano</mat-label>
+        <mat-label translate="pages.vehicle-form.label-year"></mat-label>
         <input matInput formControlName="year"/>
 
         @if(formGroup.controls['year'].hasError('required')){
-          <mat-error>Campo obrigatório</mat-error>
+          <mat-error translate="general.form-validations.required"></mat-error>
         }
       </mat-form-field>
     </div>

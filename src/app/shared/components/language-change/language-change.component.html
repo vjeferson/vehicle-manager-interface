@@ -1,0 +1,13 @@
+<button mat-button [matMenuTriggerFor]="menuLanguage" class="language-change">
+  <p class="language-change_label" translate="general.components.language-options.label"></p>
+  <div class="language-change_language-selected">
+    <span [translate]="languageSelected.name"></span>
+  </div>
+</button>
+
+<mat-menu #menuLanguage="matMenu">
+  @for (option of languageOptions; track option) {
+    <button mat-menu-item (click)="onChangeLanguage(option)">{{ option.name | translate }}</button>
+  }
+</mat-menu>
+ 
