@@ -1,8 +1,8 @@
 <section class="vehicle-form">
-  <h2>Registro de veículo</h2>
+  <h2 translate="pages.vehicle-form.title-register"></h2>
   <mat-divider></mat-divider>
 
-  <form [formGroup]="formGroup">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
     <div class="row">
       <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
         <mat-label>Placa</mat-label>
@@ -62,12 +62,13 @@
     </div>
 
     <div class="row vehicle-form_wrapper-actions">
-      <button mat-stroked-button type="button" color="primary" class="col-md-3 col-sm-12 vehicle-form_action-cancel">
-        Cancelar
+      <button mat-stroked-button type="button" color="primary" 
+        class="col-md-3 col-sm-12 vehicle-form_action-cancel" (click)="onRedirect(routePaths.VehicleList)">
+        <span translate="general.buttons.cancel"></span>
       </button>
 
       <button mat-flat-button type="submit" color="primary" class="col-md-3 col-sm-12">
-        Adicionar
+        <span translate="general.buttons.register"></span>
       </button>
     </div>
   </form>

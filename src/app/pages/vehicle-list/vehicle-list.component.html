@@ -1,1 +1,14 @@
-<p>vehicle-list works!</p>
+<section class="vehicle-list">
+  <div class="vehicle-list_wrapper-title">
+    <h2 translate="pages.vehicle-list.title"></h2>
+
+    <button mat-button (click)="onRedirect(routePaths.VehicleRegister)">
+      <mat-icon color="accent">add</mat-icon>
+      <span translate="general.buttons.register"></span>
+    </button>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <p>vehicle-list works!</p>
+</section>

@@ -1,6 +1,12 @@
 .layout {
-  display: flex;
-  justify-content: space-between;
+  &_tollbar {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_content {
+    padding: 2rem;
+  }
 
   .language-select-button {
     display: block;

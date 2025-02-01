@@ -1,8 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
+import { TranslateModule } from '@ngx-translate/core';
+
+import { RoutePaths } from 'src/app/shared/enums/route-path.enum';
 
 export interface PeriodicElement {
   name: string;
@@ -14,11 +21,20 @@ export interface PeriodicElement {
 @Component({
   selector: 'app-vehicle-list',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule],
+  imports: [
+    TranslateModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatDividerModule,
+    MatButtonModule,
+    MatIconModule,
+  ],
   templateUrl: './vehicle-list.component.html',
-  styleUrl: './vehicle-list.component.scss'
+  styleUrl: './vehicle-list.component.scss',
 })
 export class VehicleListComponent {
+  public readonly routePaths = RoutePaths;
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   ELEMENT_DATA: PeriodicElement[] = [
     { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
@@ -45,8 +61,14 @@ export class VehicleListComponent {
 
   dataSource = new MatTableDataSource<PeriodicElement>(this.ELEMENT_DATA);
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  
+
+  constructor(private _router: Router) {}
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  public onRedirect(path: RoutePaths) {
+    this._router.navigateByUrl(path);
   }
 }

@@ -1,14 +1,25 @@
 {
-    "general":{
-        "app-title": "Info veículos",
-        "components": {
-            "language-options":{
-                "label": "Idioma",
-                "en": "Inglês",
-                "pt": "Português"
-            }
-        },
-        "buttons":{}
+  "general": {
+    "app-title": "Info veículos",
+    "components": {
+      "language-options": {
+        "label": "Idioma",
+        "en": "Inglês",
+        "pt": "Português"
+      }
     },
-    "pages":{}
+    "buttons": {
+      "cancel": "Cancelar",
+      "register": "Cadastrar"
+    }
+  },
+  "pages": {
+    "vehicle-list": {
+      "title": "Veículos"
+    },
+    "vehicle-form": {
+      "title-register": "Cadastro veículo",
+      "title-edit": "Edição veículo"
+    }
+  }
 }
