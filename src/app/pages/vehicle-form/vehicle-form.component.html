@@ -3,60 +3,122 @@
   <mat-divider></mat-divider>
 
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-    <div class="row">
+    <div class="row" >
+      <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+        <mat-label translate="pages.vehicle-form.label-type"></mat-label>
+        <mat-select formControlName="type" >
+          @for (option of vehiclesOptions; track option) {
+            <mat-option [value]="option.value">
+              {{ option.name | translate }}
+            </mat-option>
+          }
+        </mat-select>
+
+        @if(formGroup.controls['type'].hasError('required')){
+          <mat-error translate="general.form-validations.required"></mat-error>
+        }
+      </mat-form-field>
+
       <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
         <mat-label translate="pages.vehicle-form.label-plate"></mat-label>
-        <input matInput formControlName="plate" placeholder="Ex. ABC 123" />
+        <input matInput formControlName="plate" placeholder="Ex. ABC 1234" 
+          mask="SSS 0A00" style="text-transform:uppercase"/>
 
         @if(formGroup.controls['plate'].hasError('required')){
           <mat-error translate="general.form-validations.required"></mat-error>
+        }
+
+        @if(formGroup.controls['plate'].hasError('mask')){
+          <mat-error translate="general.form-validations.invalid"></mat-error>
         }
       </mat-form-field>
 
       <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
         <mat-label translate="pages.vehicle-form.label-chassis"></mat-label>
-        <input matInput formControlName="chassis"/>
+        <input matInput formControlName="chassis"
+          mask="AAAAAAAAAAAAAAAAA" style="text-transform:uppercase"/>
 
         @if(formGroup.controls['chassis'].hasError('required')){
           <mat-error translate="general.form-validations.required"></mat-error>
+        }
+
+        @if(formGroup.controls['chassis'].hasError('mask')){
+          <mat-error translate="general.form-validations.invalid"></mat-error>
         }
       </mat-form-field>
 
       <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
         <mat-label translate="pages.vehicle-form.label-renavam"></mat-label>
-        <input matInput formControlName="renavam"/>
+        <input matInput formControlName="renavam" mask="00000000000"/>
 
         @if(formGroup.controls['renavam'].hasError('required')){
           <mat-error translate="general.form-validations.required"></mat-error>
         }
-      </mat-form-field>
 
-      <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-        <mat-label translate="pages.vehicle-form.label-model"></mat-label>
-        <input matInput formControlName="model"/>
-
-        @if(formGroup.controls['model'].hasError('required')){
-          <mat-error translate="general.form-validations.required"></mat-error>
+        @if(formGroup.controls['renavam'].hasError('mask')){
+          <mat-error translate="general.form-validations.invalid"></mat-error>
         }
       </mat-form-field>
     </div>
-
+    
     <div class="row">
       <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
         <mat-label translate="pages.vehicle-form.label-brand"></mat-label>
-        <input matInput formControlName="brand"/>
-
+        <input matInput formControlName="brand" [maxlength]="maxCharactersTextFields"/>
+  
+        <mat-hint align="end">{{formGroup.controls['brand'].value?.length || 0}} / {{ maxCharactersTextFields }}</mat-hint>
+  
         @if(formGroup.controls['brand'].hasError('required')){
           <mat-error translate="general.form-validations.required"></mat-error>
         }
       </mat-form-field>
 
       <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-        <mat-label translate="pages.vehicle-form.label-year"></mat-label>
-        <input matInput formControlName="year"/>
+        <mat-label translate="pages.vehicle-form.label-model"></mat-label>
+        <input matInput formControlName="model" [maxlength]="maxCharactersTextFields"/>
 
-        @if(formGroup.controls['year'].hasError('required')){
+        <mat-hint align="end">{{formGroup.controls['model'].value?.length || 0}} / {{ maxCharactersTextFields }}</mat-hint>
+
+        @if(formGroup.controls['model'].hasError('required')){
           <mat-error translate="general.form-validations.required"></mat-error>
+        }
+      </mat-form-field>      
+
+      <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+        <mat-label translate="pages.vehicle-form.label-year-model"></mat-label>
+        <input matInput formControlName="yearModel" mask="0000"/>
+
+        @if(formGroup.controls['yearModel'].hasError('required')){
+          <mat-error translate="general.form-validations.required"></mat-error>
+        }
+
+        @else if(formGroup.controls['yearModel'].hasError('min')){
+          <mat-error translate="general.form-validations.min"
+            [translateParams]="{ min: yearPatentTheFirstCar }"></mat-error>
+        }
+
+        @else if(formGroup.controls['yearModel'].hasError('max')){
+          <mat-error translate="general.form-validations.max"
+            [translateParams]="{ max: maxYearModel }"></mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+        <mat-label translate="pages.vehicle-form.label-year-manufacture"></mat-label>
+        <input matInput formControlName="yearManufacture" mask="0000"/>
+
+        @if(formGroup.controls['yearManufacture'].hasError('required')){
+          <mat-error translate="general.form-validations.required"></mat-error>
+        }
+
+        @else if(formGroup.controls['yearManufacture'].hasError('min')){
+          <mat-error translate="general.form-validations.min"
+            [translateParams]="{ min: yearPatentTheFirstCar }"></mat-error>
+        }
+
+        @else if(formGroup.controls['yearManufacture'].hasError('max')){
+          <mat-error translate="general.form-validations.max"
+            [translateParams]="{ max: maxYearManufacture }"></mat-error>
         }
       </mat-form-field>
     </div>

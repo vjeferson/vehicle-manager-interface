@@ -6,6 +6,13 @@
         "label": "Language",
         "en": "English",
         "pt": "Portuguese"
+      },
+      "vehicle-options": {
+        "motorcycle": "Motorcycle",
+        "automobile": "Automobile",
+        "minibus": "Minibus",
+        "bus": "Bus",
+        "truck": "Truck"
       }
     },
     "buttons": {
@@ -13,7 +20,10 @@
       "register": "Register"
     },
     "form-validations": {
-      "required": "Required field"
+      "required": "Required field",
+      "invalid": "Invalid field",
+      "min": "Minimum value: {{ min }}",
+      "max": "Maximum value: {{ max }}"
     }
   },
   "pages": {
@@ -23,12 +33,14 @@
     "vehicle-form": {
       "title-register": "Vehicle registration",
       "title-edit": "Vehicle edition",
+      "label-type": "Type",
       "label-plate": "Plate",
       "label-chassis": "Chassis",
       "label-renavam": "Renavam",
       "label-model": "Model",
       "label-brand": "Brand",
-      "label-year": "Year"
+      "label-year-model": "Year model",
+      "label-year-manufacture": "Year manufacture"
     }
   }
 }

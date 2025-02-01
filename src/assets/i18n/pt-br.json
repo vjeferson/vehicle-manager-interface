@@ -6,6 +6,13 @@
         "label": "Idioma",
         "en": "Inglês",
         "pt": "Português"
+      },
+      "vehicle-options": {
+        "motorcycle": "Motocicleta",
+        "automobile": "Automóvel",
+        "minibus": "Microônibus",
+        "bus": "Ônibus",
+        "truck": "Caminhão"
       }
     },
     "buttons": {
@@ -13,7 +20,10 @@
       "register": "Cadastrar"
     },
     "form-validations": {
-      "required": "Campo obrigatório"
+      "required": "Campo obrigatório",
+      "invalid": "Campo inválido",
+      "min": "Valor mínimo: {{ min }}",
+      "max": "Valor máximo: {{ max }}"
     }
   },
   "pages": {
@@ -23,12 +33,14 @@
     "vehicle-form": {
       "title-register": "Cadastro veículo",
       "title-edit": "Edição veículo",
+      "label-type": "Tipo",
       "label-plate": "Placa",
       "label-chassis": "Chassi",
       "label-renavam": "Renavam",
       "label-model": "Modelo",
       "label-brand": "Marca",
-      "label-year": "Ano"
+      "label-year-model": "Ano modelo",
+      "label-year-manufacture": "Ano fabricação"
     }
   }
 }

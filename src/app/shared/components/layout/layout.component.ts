@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
@@ -10,6 +10,8 @@ import { MatMenuModule } from '@angular/material/menu';
 
 import { TranslateModule } from '@ngx-translate/core';
 
+import { RoutePaths } from 'src/app/shared/enums/route-path.enum';
+
 import { LanguageChangeComponent } from 'src/app/shared/components/language-change/language-change.component';
 
 @Component({
@@ -17,6 +19,7 @@ import { LanguageChangeComponent } from 'src/app/shared/components/language-chan
   standalone: true,
   imports: [
     RouterOutlet,
+    RouterLink,
     FormsModule,
     ReactiveFormsModule,
     TranslateModule,
@@ -24,9 +27,11 @@ import { LanguageChangeComponent } from 'src/app/shared/components/language-chan
     MatCardModule,
     MatButtonModule,
     MatMenuModule,
-    LanguageChangeComponent
+    LanguageChangeComponent,
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
 })
-export class LayoutComponent {}
+export class LayoutComponent {
+  public readonly routePaths = RoutePaths;
+}
