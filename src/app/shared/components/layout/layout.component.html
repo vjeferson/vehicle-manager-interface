@@ -1,20 +1,24 @@
-<mat-toolbar color="primary">
-  <span>Info veículos</span>
+<mat-toolbar color="primary" class="layout">
+  <span translate="general.app-title"></span>
   <span class="example-spacer"></span>
-  <button
-    mat-icon-button
-    class="example-icon favorite-icon"
-    aria-label="Example icon-button with heart icon"
-  >
-    <mat-icon>favorite</mat-icon>
+
+  <button mat-button [matMenuTriggerFor]="menuLanguage" class="language-select-button">
+    <p class="language-select-button-label" translate="general.components.language-options.label"></p>
+    <div class="language-selected">
+      <span [translate]="languageSelected.name"></span>
+    </div>
   </button>
+  <mat-menu #menuLanguage="matMenu">
+    @for (option of languageOptions; track option) {
+      <button mat-menu-item (click)="onChangeLanguage(option)">{{ option.name | translate }}</button>
+    }
+  </mat-menu>
 </mat-toolbar>
 
 <main>
-    <mat-card>
-        <mat-card-content>
-
-            <router-outlet></router-outlet>
-        </mat-card-content>
-    </mat-card>
+  <mat-card>
+    <mat-card-content>
+      <router-outlet></router-outlet>
+    </mat-card-content>
+  </mat-card>
 </main>

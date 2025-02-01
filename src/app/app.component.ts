@@ -13,7 +13,7 @@ import * as packageInfo from '../../package.json';
 export class AppComponent implements OnInit {
   private readonly _appTitle = 'Info veículos';
   private readonly _appInfo = packageInfo;
-  
+
   ngOnInit(): void {
     console.log(`${this._appTitle} Versão: ${this._appInfo.version}`);
   }

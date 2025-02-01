@@ -1,0 +1,14 @@
+{
+    "general":{
+        "app-title": "Info vehicles",
+        "components": {
+            "language-options":{
+                "label": "Language",
+                "en": "English",
+                "pt": "Portuguese"
+            }
+        },
+        "buttons":{}
+    },
+    "pages":{}
+}
