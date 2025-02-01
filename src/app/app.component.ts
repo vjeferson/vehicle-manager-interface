@@ -11,10 +11,10 @@ import * as packageInfo from '../../package.json';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-  private readonly appTitle = 'Info veículos';
-  private readonly appInfo = packageInfo;
+  private readonly _appTitle = 'Info veículos';
+  private readonly _appInfo = packageInfo;
   
   ngOnInit(): void {
-    console.log(`${this.appTitle} Versão: ${this.appInfo.version}`);
+    console.log(`${this._appTitle} Versão: ${this._appInfo.version}`);
   }
 }

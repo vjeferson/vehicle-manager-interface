@@ -1,0 +1,20 @@
+$tablet-width: 767px;
+
+.vehicle-form {
+  &_wrapper-actions {
+    display: flex;
+    justify-content: end;
+    padding: 16px;
+  }
+
+  &_action-cancel {
+    margin-right: 1rem;
+  }
+}
+
+@media (max-width: $tablet-width) {
+  .vehicle-form_action-cancel {
+    margin-right: 0 !important;
+    margin-bottom: 1rem;
+  }
+}

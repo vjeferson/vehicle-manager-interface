@@ -1,1 +1,74 @@
-<p>vehicle-form works!</p>
+<section class="vehicle-form">
+  <h2>Registro de veículo</h2>
+  <mat-divider></mat-divider>
+
+  <form [formGroup]="formGroup">
+    <div class="row">
+      <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+        <mat-label>Placa</mat-label>
+        <input matInput formControlName="plate" placeholder="Ex. ABC 123" />
+
+        @if(formGroup.controls['plate'].hasError('required')){
+          <mat-error>Campo obrigatório</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+        <mat-label>Chassi</mat-label>
+        <input matInput formControlName="chassis"/>
+
+        @if(formGroup.controls['chassis'].hasError('required')){
+          <mat-error>Campo obrigatório</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+        <mat-label>Renavam</mat-label>
+        <input matInput formControlName="renavam"/>
+
+        @if(formGroup.controls['renavam'].hasError('required')){
+          <mat-error>Campo obrigatório</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+        <mat-label>Modelo</mat-label>
+        <input matInput formControlName="model"/>
+
+        @if(formGroup.controls['model'].hasError('required')){
+          <mat-error>Campo obrigatório</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+        <mat-label>Marca</mat-label>
+        <input matInput formControlName="brand"/>
+
+        @if(formGroup.controls['brand'].hasError('required')){
+          <mat-error>Campo obrigatório</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+        <mat-label>Ano</mat-label>
+        <input matInput formControlName="year"/>
+
+        @if(formGroup.controls['year'].hasError('required')){
+          <mat-error>Campo obrigatório</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <div class="row vehicle-form_wrapper-actions">
+      <button mat-stroked-button type="button" color="primary" class="col-md-3 col-sm-12 vehicle-form_action-cancel">
+        Cancelar
+      </button>
+
+      <button mat-flat-button type="submit" color="primary" class="col-md-3 col-sm-12">
+        Adicionar
+      </button>
+    </div>
+  </form>
+</section>
