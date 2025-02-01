@@ -1,0 +1,46 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$mat-theme-primary-palette: map-merge(mat.$blue-grey-palette, ( 501: #344955,201: #4a6572,701: #232f34,));
+$mat-theme-primary: mat.define-palette(
+  $mat-theme-primary-palette,
+  $default: 501,
+  $lighter: 201,
+  $darker: 701,
+  $text: 600
+);
+
+$mat-theme-accent-palette: map-merge(mat.$yellow-palette, ( 501: #f9aa33,contrast: (A100: white,A200: white,)));
+$mat-theme-accent: mat.define-palette(
+  $mat-theme-accent-palette,
+  $default: 501,
+  $lighter: A100,
+  $darker: A200,
+  $text: 600
+);
+
+$mat-theme-warn-palette: map-merge(mat.$pink-palette, ( ));
+$mat-theme-warn: mat.define-palette(
+  $mat-theme-warn-palette,
+  $default: A200,
+  $lighter: 500,
+  $darker: 500,
+  $text: A700
+);
+
+$mat-typography: mat.define-typography-config();
+
+$mat-density: 0;
+
+$mat-core-theme: mat.define-light-theme((
+  color: (
+    primary: $mat-theme-primary,
+    accent: $mat-theme-accent,
+    warn: $mat-theme-warn
+  ),
+  typography: $mat-typography,
+  density: $mat-density
+));
+
+@include mat.all-component-themes($mat-core-theme);
