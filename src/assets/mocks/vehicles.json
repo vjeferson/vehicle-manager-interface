@@ -1,0 +1,68 @@
+[
+  {
+    "type": 1,
+    "plate": "HEY7360",
+    "chassis": "9JHJ3883HHH553433",
+    "renavam": "00378474777",
+    "model": "CG Titan ks 150",
+    "brand": "HONDA",
+    "yearModel": 2005,
+    "yearManufacture": 2005,
+    "id": "109476e1-bd39-4f04-b8e1-5648321d5936"
+  },
+  {
+    "type": 2,
+    "plate": "H3Y7360",
+    "chassis": "2JHJ3883HHH553433",
+    "renavam": "00378474777",
+    "model": "CG Titan ks 150",
+    "brand": "HONDA",
+    "yearModel": 2005,
+    "yearManufacture": 2005,
+    "id": "209476e1-bd39-4f04-b8e1-5648321d5936"
+  },
+  {
+    "type": 2,
+    "plate": "GEY7360",
+    "chassis": "3JHJ3883HHH553433",
+    "renavam": "00378474777",
+    "model": "CG Titan ks 150",
+    "brand": "HONDA",
+    "yearModel": 2005,
+    "yearManufacture": 2005,
+    "id": "309476e1-bd39-4f04-b8e1-5648321d5936"
+  },
+  {
+    "type": 2,
+    "plate": "HEY7360",
+    "chassis": "4JHJ3883HHH553433",
+    "renavam": "00378474777",
+    "model": "CG Titan ks 150",
+    "brand": "HONDA",
+    "yearModel": 2005,
+    "yearManufacture": 2005,
+    "id": "409476e1-bd39-4f04-b8e1-5648321d5936"
+  },
+  {
+    "type": 4,
+    "plate": "HEY7360",
+    "chassis": "5JHJ3883HHH553433",
+    "renavam": "00378474777",
+    "model": "CG Titan ks 150",
+    "brand": "HONDA",
+    "yearModel": 2005,
+    "yearManufacture": 2005,
+    "id": "509476e1-bd39-4f04-b8e1-5648321d5936"
+  },
+  {
+    "type": 1,
+    "plate": "JEY7360",
+    "chassis": "6KHJ3883HHH553433",
+    "renavam": "00378474777",
+    "model": "Biz 125",
+    "brand": "HONDA",
+    "yearModel": 2012,
+    "yearManufacture": 2012,
+    "id": "609476e1-bd39-4f04-b8e1-5648321d5936"
+  }
+]

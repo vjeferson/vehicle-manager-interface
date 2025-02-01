@@ -10,5 +10,30 @@
 
   <mat-divider></mat-divider>
 
-  <p>vehicle-list works!</p>
+  <div class="vehicle-list_wrapper-table">
+    <table mat-table [dataSource]="dataSource">
+      @for (column of columnsToDisplay; track column) {
+        <ng-container matColumnDef="{{ column.columnDef }}">
+          <mat-header-cell mat-header-cell *matHeaderCellDef>{{ column.header | translate }}</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{ column.cell(row) }}</mat-cell>
+        </ng-container>
+      }
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" [attr.colspan]="displayedColumns.length"
+        translate="general.messages.not-found-data"></td>
+      </tr>
+    </table>
+  
+    <mat-paginator
+      [hidePageSize]="dataSource.data.length === 0"
+      [pageSize]="defaultItemsPerPage"
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+    >
+    </mat-paginator>
+  </div>
 </section>

@@ -14,11 +14,21 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
-import { TranslateModule } from '@ngx-translate/core';
+import { take } from 'rxjs';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
+import { VehicleApiService } from 'src/app/core/api/vehicle-api.service';
+
 import { RoutePaths } from 'src/app/shared/enums/route-path.enum';
+
+import { CreateVehicle } from 'src/app/shared/interfaces/create-vehicle.interface';
 
 import { vehiclesData } from 'src/app/shared/data/vehicles.data';
 
@@ -52,7 +62,13 @@ export class VehicleFormComponent implements OnInit {
 
   public formGroup!: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder, private _router: Router) {}
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _router: Router,
+    private _snackBar: MatSnackBar,
+    private _translateService: TranslateService,
+    private _vehicleApiService: VehicleApiService,
+  ) {}
 
   ngOnInit(): void {
     this.formGroup = this._formBuilder.group({
@@ -91,6 +107,40 @@ export class VehicleFormComponent implements OnInit {
     });
   }
 
+  private _openSnackBar(message: string): void {
+    this._snackBar.open(
+      this._translateService.instant(message),
+      this._translateService.instant('general.buttons.close'),
+      {
+        horizontalPosition: 'center' as MatSnackBarHorizontalPosition,
+        verticalPosition: 'top' as MatSnackBarVerticalPosition,
+      }
+    );
+  }
+
+  private _create(): void {
+    const payload: CreateVehicle = {
+      type: this.formGroup.value.type,
+      plate: this.formGroup.value.plate.toUpperCase(),
+      chassis: this.formGroup.value.chassis.toUpperCase(),
+      renavam: this.formGroup.value.renavam,
+      model: this.formGroup.value.model,
+      brand: this.formGroup.value.brand,
+      yearModel: +this.formGroup.value.yearModel,
+      yearManufacture: +this.formGroup.value.yearManufacture,
+    };
+
+    this._vehicleApiService
+      .create(payload)
+      .pipe(take(1))
+      .subscribe({
+        next: () => {
+          this._openSnackBar('general.messages.success-register');
+          this.onRedirect(RoutePaths.VehicleList);
+        },
+      });
+  }
+
   public onRedirect(path: RoutePaths): void {
     this._router.navigateByUrl(path);
   }
@@ -99,10 +149,9 @@ export class VehicleFormComponent implements OnInit {
     this.formGroup.markAllAsTouched();
 
     if (this.formGroup.invalid) {
-      console.log(this.formGroup.controls);
       return;
     }
 
-    console.log(this.formGroup.value);
+    this._create();
   }
 }

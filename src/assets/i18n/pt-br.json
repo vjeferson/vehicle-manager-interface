@@ -17,18 +17,29 @@
     },
     "buttons": {
       "cancel": "Cancelar",
-      "register": "Cadastrar"
+      "register": "Cadastrar",
+      "close": "Fechar"
     },
     "form-validations": {
       "required": "Campo obrigatório",
       "invalid": "Campo inválido",
       "min": "Valor mínimo: {{ min }}",
       "max": "Valor máximo: {{ max }}"
+    },
+    "messages": {
+      "not-found-data": "Nenhum registro encontrado.",
+      "success-register": "Registro cadastrado com sucesso."
     }
   },
   "pages": {
     "vehicle-list": {
-      "title": "Veículos"
+      "title": "Veículos",
+      "column-type": "Tipo",
+      "column-plate": "Placa",
+      "column-chassis": "Chassi",
+      "column-renavam": "Renavam",
+      "column-model-brand": "Marca/Modelo",
+      "column-year-model-manufacture": "Ano modelo/Ano fabricação"
     },
     "vehicle-form": {
       "title-register": "Cadastro veículo",

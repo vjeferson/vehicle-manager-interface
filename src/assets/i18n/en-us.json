@@ -17,18 +17,28 @@
     },
     "buttons": {
       "cancel": "Cancel",
-      "register": "Register"
+      "register": "Register",
+      "close": "Close"
     },
     "form-validations": {
       "required": "Required field",
       "invalid": "Invalid field",
       "min": "Minimum value: {{ min }}",
       "max": "Maximum value: {{ max }}"
+    },
+    "messages" :{
+      "success-register": "Registration successfully registered."
     }
   },
   "pages": {
     "vehicle-list": {
-      "title": "Vehicles"
+      "title": "Vehicles",
+      "column-type": "Type",
+      "column-plate": "Plate",
+      "column-chassis": "Chassis",
+      "column-renavam": "Renavam",
+      "column-model-brand": "Brand/Model",
+      "column-year-model-manufacture": "Year model/Year manufacture"
     },
     "vehicle-form": {
       "title-register": "Vehicle registration",

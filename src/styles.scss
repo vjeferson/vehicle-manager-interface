@@ -53,6 +53,12 @@ mat-divider {
   background-color: transparent !important;
 }
 
-.mat-mdc-form-field-error-wrapper, .mat-mdc-form-field-hint-wrapper {
+.mat-mdc-form-field-error-wrapper,
+.mat-mdc-form-field-hint-wrapper {
   padding: 0px !important;
+}
+
+.mat-mdc-no-data-row {
+  height: 3rem;
+  text-align: center;
 }
