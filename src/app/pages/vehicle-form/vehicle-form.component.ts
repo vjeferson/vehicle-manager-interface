@@ -67,7 +67,7 @@ export class VehicleFormComponent implements OnInit {
     private _router: Router,
     private _snackBar: MatSnackBar,
     private _translateService: TranslateService,
-    private _vehicleApiService: VehicleApiService,
+    private _vehicleApiService: VehicleApiService
   ) {}
 
   ngOnInit(): void {

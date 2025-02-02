@@ -13,7 +13,8 @@
         "minibus": "Microônibus",
         "bus": "Ônibus",
         "truck": "Caminhão"
-      }
+      },
+      "pipe-unknow": "Não identificado"
     },
     "buttons": {
       "cancel": "Cancelar",

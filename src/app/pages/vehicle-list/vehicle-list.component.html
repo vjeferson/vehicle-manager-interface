@@ -15,7 +15,7 @@
       @for (column of columnsToDisplay; track column) {
         <ng-container matColumnDef="{{ column.columnDef }}">
           <mat-header-cell mat-header-cell *matHeaderCellDef>{{ column.header | translate }}</mat-header-cell>
-          <mat-cell *matCellDef="let row">{{ column.cell(row) }}</mat-cell>
+          <mat-cell *matCellDef="let row">{{ column.cell(row) | translate }}</mat-cell>
         </ng-container>
       }
   

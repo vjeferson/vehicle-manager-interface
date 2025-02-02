@@ -6,12 +6,6 @@
     "strict": true,
     "resolveJsonModule": true,
     "baseUrl": "./",
-    "paths": {
-      "@app": ["src/app/*"],
-      "@shared": ["src/app/shared/*"],
-      "@core": ["src/app/core/*"],
-      "@pages": ["src/app/pages/*"]
-    },
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,

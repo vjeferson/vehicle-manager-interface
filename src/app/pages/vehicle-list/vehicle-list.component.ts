@@ -16,6 +16,8 @@ import { RoutePaths } from 'src/app/shared/enums/route-path.enum';
 
 import { ColumnTable, Vehicle } from 'src/app/shared/interfaces';
 
+import { VehicleTypePipe } from 'src/app/shared/pipes/vehicle-type.pipe';
+
 @Component({
   selector: 'app-vehicle-list',
   standalone: true,
@@ -27,6 +29,7 @@ import { ColumnTable, Vehicle } from 'src/app/shared/interfaces';
     MatButtonModule,
     MatIconModule,
   ],
+  providers: [VehicleTypePipe],
   templateUrl: './vehicle-list.component.html',
   styleUrl: './vehicle-list.component.scss',
 })
@@ -41,7 +44,7 @@ export class VehicleListComponent implements OnInit {
     {
       columnDef: 'type',
       header: 'pages.vehicle-list.column-type',
-      cell: (element: Vehicle) => element.type,
+      cell: (element: Vehicle) => this._vehicleTypePipe.transform(element.type),
     },
     {
       columnDef: 'plate',
@@ -76,6 +79,7 @@ export class VehicleListComponent implements OnInit {
 
   constructor(
     private _router: Router,
+    private _vehicleTypePipe: VehicleTypePipe,
     private _vehicleApiService: VehicleApiService
   ) {}
 
@@ -83,7 +87,7 @@ export class VehicleListComponent implements OnInit {
     this._search();
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
 
