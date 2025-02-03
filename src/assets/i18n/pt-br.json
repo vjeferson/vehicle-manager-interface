@@ -2,6 +2,14 @@
   "general": {
     "app-title": "Info veículos",
     "components": {
+      "paginator": {
+        "last-page-label": "Última página",
+        "next-page-label": "Próxima página",
+        "first-page-label": "Primeira página",
+        "previous-page-label": "Página anterior",
+        "items-per-page-label": "Itens por página",
+        "of-label": "de"
+      },
       "language-options": {
         "label": "Idioma",
         "en": "Inglês",
