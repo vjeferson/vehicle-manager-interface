@@ -20,7 +20,8 @@
       "cancel": "Cancelar",
       "register": "Cadastrar",
       "close": "Fechar",
-      "save": "Salvar"
+      "save": "Salvar",
+      "confirm": "Confirmar"
     },
     "form-validations": {
       "required": "Campo obrigatório",
@@ -32,6 +33,7 @@
       "not-found-data": "Nenhum registro encontrado.",
       "success-register": "Registro cadastrado com sucesso.",
       "success-edit": "Registro editado com sucesso.",
+      "success-delete": "Registro removido com sucesso.",
       "error-load-data": "Erro ao carregar o registro."
     }
   },

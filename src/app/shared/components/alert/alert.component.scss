@@ -1,0 +1,15 @@
+.mat-mdc-dialog-content,
+.mat-mdc-dialog-actions {
+  max-width: 40vw !important;
+}
+
+.mat-mdc-dialog-content {
+  color: #333;
+  font-size: 16px;
+}
+
+.mat-mdc-dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 24px;
+}

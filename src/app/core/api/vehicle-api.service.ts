@@ -50,4 +50,14 @@ export class VehicleApiService {
     );
     return of(true);
   }
+
+  public delete(vehicleId: string): Observable<boolean> {
+    const vehicleIndex = this._mock.findIndex((vehicle) => vehicle.id === vehicleId);
+    this._mock.splice(vehicleIndex, 1);
+    localStorage.setItem(
+      LocalStorageKeys.MockVehicles,
+      JSON.stringify(this._mock)
+    );
+    return of(true);
+  }
 }

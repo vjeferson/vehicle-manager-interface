@@ -5,6 +5,7 @@ import { RequestResultPagination } from 'src/app/shared/interfaces/request-resul
 import { SearchVehicle } from 'src/app/shared/interfaces/search-vehicle.interface';
 import { ColumnTable } from 'src/app/shared/interfaces/column-table.interface';
 import { UpdateVehicle } from 'src/app/shared/interfaces/update-vehicle.interface';
+import { AlertOptions } from 'src/app/shared/interfaces/alert-options.interface';
 
 export {
   Options,
@@ -13,5 +14,6 @@ export {
   RequestResultPagination,
   SearchVehicle,
   ColumnTable,
-  UpdateVehicle
+  UpdateVehicle,
+  AlertOptions
 };

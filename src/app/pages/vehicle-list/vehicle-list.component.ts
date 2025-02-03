@@ -6,10 +6,11 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 import { take } from 'rxjs';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { VehicleApiService } from 'src/app/core/api/vehicle-api.service';
 
@@ -18,6 +19,8 @@ import { RoutePaths } from 'src/app/shared/enums/route-path.enum';
 import { ColumnTable, Vehicle } from 'src/app/shared/interfaces';
 
 import { VehicleTypePipe } from 'src/app/shared/pipes/vehicle-type.pipe';
+
+import { AlertService } from 'src/app/core/services/alert.service';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -40,9 +43,7 @@ export class VehicleListComponent implements OnInit {
 
   public readonly routePaths = RoutePaths;
   public readonly defaultItemsPerPage = 5;
-
-  public dataSource = new MatTableDataSource<Vehicle>([]);
-  public columnsToDisplay: ColumnTable[] = [
+  public readonly columnsToDisplay: ColumnTable[] = [
     {
       columnDef: 'type',
       header: 'pages.vehicle-list.column-type',
@@ -79,12 +80,16 @@ export class VehicleListComponent implements OnInit {
     ...this.columnsToDisplay.map((item) => item.columnDef),
     'actions',
   ];
+  public dataSource = new MatTableDataSource<Vehicle>([]);
 
   constructor(
     private _router: Router,
+    private _snackBar: MatSnackBar,
+    private _translateService: TranslateService,
+    private _alertService: AlertService,
     private _vehicleTypePipe: VehicleTypePipe,
     private _vehicleApiService: VehicleApiService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this._search();
@@ -92,6 +97,17 @@ export class VehicleListComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+  }
+
+  private _openSnackBar(message: string): void {
+    this._snackBar.open(
+      this._translateService.instant(message),
+      this._translateService.instant('general.buttons.close'),
+      {
+        horizontalPosition: 'center' as MatSnackBarHorizontalPosition,
+        verticalPosition: 'top' as MatSnackBarVerticalPosition,
+      }
+    );
   }
 
   private _search(): void {
@@ -106,15 +122,37 @@ export class VehicleListComponent implements OnInit {
       });
   }
 
+  private _delete(id: string): void {
+    this._vehicleApiService
+      .delete(id)
+      .pipe(take(1))
+      .subscribe({
+        next: () => {
+          this._openSnackBar('general.messages.success-delete');
+          this._search();
+        },
+      });
+  }
+
   public onRedirect(path: RoutePaths) {
     this._router.navigateByUrl(path);
   }
 
-  public onEdit(id: string): void{
+  public onEdit(id: string): void {
     this._router.navigateByUrl(`${RoutePaths.VehicleEdit}/${id}`);
   }
 
-  public onDelete(id: string): void{
+  public onDelete(id: string): void {
+    const dialogRef = this._alertService.open({
+      message: 'Deseja realmente remover o registro?',
+      textButtonCancel: 'general.buttons.close',
+      textButtonConfirm: 'general.buttons.confirm'
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this._delete(id);
+      }
+    });
   }
 }
