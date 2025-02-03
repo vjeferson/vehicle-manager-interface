@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -28,7 +28,7 @@ import { VehicleApiService } from 'src/app/core/api/vehicle-api.service';
 
 import { RoutePaths } from 'src/app/shared/enums/route-path.enum';
 
-import { CreateVehicle } from 'src/app/shared/interfaces/create-vehicle.interface';
+import { Vehicle, CreateVehicle, UpdateVehicle } from 'src/app/shared/interfaces';
 
 import { vehiclesData } from 'src/app/shared/data/vehicles.data';
 
@@ -53,6 +53,9 @@ import { vehiclesData } from 'src/app/shared/data/vehicles.data';
   styleUrl: './vehicle-form.component.scss',
 })
 export class VehicleFormComponent implements OnInit {
+  private vehicle!: Vehicle;
+  
+  public editMode = false;
   public readonly routePaths = RoutePaths;
   public readonly yearPatentTheFirstCar = 1886;
   public readonly maxYearModel = new Date().getFullYear();
@@ -65,10 +68,11 @@ export class VehicleFormComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private _router: Router,
+    private _activatedRoute: ActivatedRoute,
     private _snackBar: MatSnackBar,
     private _translateService: TranslateService,
     private _vehicleApiService: VehicleApiService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.formGroup = this._formBuilder.group({
@@ -85,8 +89,10 @@ export class VehicleFormComponent implements OnInit {
       ],
       brand: [
         null,
-        [Validators.required],
-        Validators.maxLength(this.maxCharactersTextFields),
+        [
+          Validators.required,
+          Validators.maxLength(this.maxCharactersTextFields)
+        ],
       ],
       yearModel: [
         null,
@@ -105,6 +111,12 @@ export class VehicleFormComponent implements OnInit {
         ],
       ],
     });
+
+    const vehicleId = this._activatedRoute.snapshot.paramMap.get('id');
+    if (vehicleId) {
+      this.editMode = true;
+      this._getVehicle(vehicleId);
+    }
   }
 
   private _openSnackBar(message: string): void {
@@ -116,6 +128,34 @@ export class VehicleFormComponent implements OnInit {
         verticalPosition: 'top' as MatSnackBarVerticalPosition,
       }
     );
+  }
+
+  private _getVehicle(vehicleId: string): void {
+    this._vehicleApiService
+      .getById(vehicleId)
+      .pipe(take(1))
+      .subscribe({
+        next: (vehicle: Vehicle | null) => {
+          if (vehicle) {
+            this.vehicle = vehicle;
+            this.formGroup.controls['type'].disable();
+            this.formGroup.patchValue({
+              type: vehicle.type,
+              plate: vehicle.plate,
+              chassis: vehicle.chassis,
+              renavam: vehicle.renavam,
+              model: vehicle.model,
+              brand: vehicle.brand,
+              yearModel: vehicle.yearModel,
+              yearManufacture: vehicle.yearManufacture
+            });
+            return;
+          }
+
+          this._openSnackBar('general.messages.error-load-data');
+          this.onRedirect(RoutePaths.VehicleList);
+        },
+      });
   }
 
   private _create(): void {
@@ -141,6 +181,29 @@ export class VehicleFormComponent implements OnInit {
       });
   }
 
+  private _update(): void {
+    const payload: UpdateVehicle = {
+      id: this.vehicle.id,
+      plate: this.formGroup.value.plate.toUpperCase(),
+      chassis: this.formGroup.value.chassis.toUpperCase(),
+      renavam: this.formGroup.value.renavam,
+      model: this.formGroup.value.model,
+      brand: this.formGroup.value.brand,
+      yearModel: +this.formGroup.value.yearModel,
+      yearManufacture: +this.formGroup.value.yearManufacture,
+    };
+
+    this._vehicleApiService
+      .update(payload)
+      .pipe(take(1))
+      .subscribe({
+        next: () => {
+          this._openSnackBar('general.messages.success-edit');
+          this.onRedirect(RoutePaths.VehicleList);
+        },
+      });
+  }
+
   public onRedirect(path: RoutePaths): void {
     this._router.navigateByUrl(path);
   }
@@ -149,6 +212,12 @@ export class VehicleFormComponent implements OnInit {
     this.formGroup.markAllAsTouched();
 
     if (this.formGroup.invalid) {
+      return;
+    }
+
+
+    if (this.editMode) {
+      this._update();
       return;
     }
 

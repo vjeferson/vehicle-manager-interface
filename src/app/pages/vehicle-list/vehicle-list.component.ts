@@ -6,6 +6,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { take } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
@@ -28,6 +29,7 @@ import { VehicleTypePipe } from 'src/app/shared/pipes/vehicle-type.pipe';
     MatDividerModule,
     MatButtonModule,
     MatIconModule,
+    MatTooltipModule
   ],
   providers: [VehicleTypePipe],
   templateUrl: './vehicle-list.component.html',
@@ -73,9 +75,10 @@ export class VehicleListComponent implements OnInit {
         `${element.yearModel}/${element.yearManufacture}`,
     },
   ];
-  public displayedColumns: string[] = this.columnsToDisplay.map(
-    (item) => item.columnDef
-  );
+  public displayedColumns: string[] = [
+    ...this.columnsToDisplay.map((item) => item.columnDef),
+    'actions',
+  ];
 
   constructor(
     private _router: Router,
@@ -105,5 +108,13 @@ export class VehicleListComponent implements OnInit {
 
   public onRedirect(path: RoutePaths) {
     this._router.navigateByUrl(path);
+  }
+
+  public onEdit(id: string): void{
+    this._router.navigateByUrl(`${RoutePaths.VehicleEdit}/${id}`);
+  }
+
+  public onDelete(id: string): void{
+
   }
 }

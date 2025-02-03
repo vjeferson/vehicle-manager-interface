@@ -19,7 +19,8 @@
     "buttons": {
       "cancel": "Cancelar",
       "register": "Cadastrar",
-      "close": "Fechar"
+      "close": "Fechar",
+      "save": "Salvar"
     },
     "form-validations": {
       "required": "Campo obrigatório",
@@ -29,7 +30,9 @@
     },
     "messages": {
       "not-found-data": "Nenhum registro encontrado.",
-      "success-register": "Registro cadastrado com sucesso."
+      "success-register": "Registro cadastrado com sucesso.",
+      "success-edit": "Registro editado com sucesso.",
+      "error-load-data": "Erro ao carregar o registro."
     }
   },
   "pages": {
@@ -40,7 +43,8 @@
       "column-chassis": "Chassi",
       "column-renavam": "Renavam",
       "column-model-brand": "Marca/Modelo",
-      "column-year-model-manufacture": "Ano modelo/Ano fabricação"
+      "column-year-model-manufacture": "Ano modelo/Ano fabricação",
+      "column-actions": "Ações"
     },
     "vehicle-form": {
       "title-register": "Cadastro veículo",

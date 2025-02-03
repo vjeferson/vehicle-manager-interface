@@ -130,7 +130,7 @@
       </button>
 
       <button mat-flat-button type="submit" color="primary" class="col-md-3 col-sm-12">
-        <span translate="general.buttons.register"></span>
+        <span [translate]="editMode ? 'general.buttons.save' : 'general.buttons.register'"></span>
       </button>
     </div>
   </form>

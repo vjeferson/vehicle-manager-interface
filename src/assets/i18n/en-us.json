@@ -13,12 +13,14 @@
         "minibus": "Minibus",
         "bus": "Bus",
         "truck": "Truck"
-      }
+      },
+      "pipe-unknow": "Unidentified"
     },
     "buttons": {
       "cancel": "Cancel",
       "register": "Register",
-      "close": "Close"
+      "close": "Close",
+      "save": "Save"
     },
     "form-validations": {
       "required": "Required field",
@@ -26,8 +28,11 @@
       "min": "Minimum value: {{ min }}",
       "max": "Maximum value: {{ max }}"
     },
-    "messages" :{
-      "success-register": "Registration successfully registered."
+    "messages": {
+      "not-found-data": "No records found.",
+      "success-register": "Registration successfully registered.",
+      "success-edit": "Record edited successfully",
+      "error-load-data": "Error loading record."
     }
   },
   "pages": {
@@ -38,7 +43,8 @@
       "column-chassis": "Chassis",
       "column-renavam": "Renavam",
       "column-model-brand": "Brand/Model",
-      "column-year-model-manufacture": "Year model/Year manufacture"
+      "column-year-model-manufacture": "Year model/Year manufacture",
+      "column-actions": "Actions"
     },
     "vehicle-form": {
       "title-register": "Vehicle registration",

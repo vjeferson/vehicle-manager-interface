@@ -20,9 +20,10 @@ export const routes: Routes = [
         path: RoutePaths.VehicleRegister,
         component: VehicleFormComponent,
       },
-      // {
-      //     path: 'edit', component: VehicleFormComponent
-      // }
+      {
+        path: `${RoutePaths.VehicleEdit}/:id`,
+        component: VehicleFormComponent,
+      },
     ],
   },
 ];

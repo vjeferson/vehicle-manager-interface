@@ -4,6 +4,7 @@ import { CreateVehicle } from 'src/app/shared/interfaces/create-vehicle.interfac
 import { RequestResultPagination } from 'src/app/shared/interfaces/request-result-pagination.interface';
 import { SearchVehicle } from 'src/app/shared/interfaces/search-vehicle.interface';
 import { ColumnTable } from 'src/app/shared/interfaces/column-table.interface';
+import { UpdateVehicle } from 'src/app/shared/interfaces/update-vehicle.interface';
 
 export {
   Options,
@@ -12,4 +13,5 @@ export {
   RequestResultPagination,
   SearchVehicle,
   ColumnTable,
+  UpdateVehicle
 };

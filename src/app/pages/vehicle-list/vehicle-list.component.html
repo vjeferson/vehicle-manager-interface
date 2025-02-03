@@ -18,6 +18,22 @@
           <mat-cell *matCellDef="let row">{{ column.cell(row) | translate }}</mat-cell>
         </ng-container>
       }
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell mat-header-cell *matHeaderCellDef class="d-flex justify-content-center">
+          {{ 'pages.vehicle-list.column-actions' | translate }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="d-flex justify-content-center">
+          <button mat-icon-button color="accent" matTooltip="Editar veículo"
+            (click)="onEdit(row.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" matTooltip="Deletar veículo"
+            (click)="onDelete(row.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
   
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
