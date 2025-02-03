@@ -1,5 +1,5 @@
 <section class="vehicle-form">
-  <h2 translate="pages.vehicle-form.title-register"></h2>
+  <h2 [translate]="editMode ? 'pages.vehicle-form.title-edit':'pages.vehicle-form.title-register'"></h2>
   <mat-divider></mat-divider>
 
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
