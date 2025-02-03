@@ -24,11 +24,11 @@
           {{ 'pages.vehicle-list.column-actions' | translate }}
         </mat-header-cell>
         <mat-cell *matCellDef="let row" class="d-flex justify-content-center">
-          <button mat-icon-button color="accent" matTooltip="Editar veículo"
+          <button mat-icon-button color="accent" [matTooltip]="'pages.vehicle-list.edit-action' | translate"
             (click)="onEdit(row.id)">
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button color="warn" matTooltip="Deletar veículo"
+          <button mat-icon-button color="warn" [matTooltip]="'pages.vehicle-list.delete-action' | translate"
             (click)="onDelete(row.id)">
             <mat-icon>delete</mat-icon>
           </button>

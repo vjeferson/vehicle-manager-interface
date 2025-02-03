@@ -55,6 +55,8 @@
       "column-model-brand": "Brand/Model",
       "column-year-model-manufacture": "Year model/Year manufacture",
       "column-actions": "Actions",
+      "edit-action": "Edit vehicle",
+      "delete-action": "Remove vehicle",
       "question-delete": "Do you really want to remove the registration?"
     },
     "vehicle-form": {

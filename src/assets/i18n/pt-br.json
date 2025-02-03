@@ -55,6 +55,8 @@
       "column-model-brand": "Marca/Modelo",
       "column-year-model-manufacture": "Ano modelo/Ano fabricação",
       "column-actions": "Ações",
+      "edit-action": "Editar veículo",
+      "delete-action": "Remover veículo",
       "question-delete": "Deseja realmente remover o registro?"
     },
     "vehicle-form": {
