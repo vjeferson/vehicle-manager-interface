@@ -144,7 +144,7 @@ export class VehicleListComponent implements OnInit {
 
   public onDelete(id: string): void {
     const dialogRef = this._alertService.open({
-      message: 'Deseja realmente remover o registro?',
+      message: 'pages.vehicle-list.question-delete',
       textButtonCancel: 'general.buttons.close',
       textButtonConfirm: 'general.buttons.confirm'
     });

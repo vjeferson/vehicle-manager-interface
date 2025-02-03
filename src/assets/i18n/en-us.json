@@ -54,7 +54,8 @@
       "column-renavam": "Renavam",
       "column-model-brand": "Brand/Model",
       "column-year-model-manufacture": "Year model/Year manufacture",
-      "column-actions": "Actions"
+      "column-actions": "Actions",
+      "question-delete": "Do you really want to remove the registration?"
     },
     "vehicle-form": {
       "title-register": "Vehicle registration",
